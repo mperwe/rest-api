@@ -1,1 +1,5 @@
-Creating a REST API
+Creating a REST API 
+Create
+Read
+Update
+Delete
