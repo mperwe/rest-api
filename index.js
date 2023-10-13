@@ -6,7 +6,7 @@ const PORT = 5000    // app port
 
 app.use(bodyParser.json());
 
-app.listen(PORT, ()=> console.log (`Server running on port: http://localhost${PORT}`))
+app.listen(PORT, ()=> console.log (`Server running on port: http://localhost:${PORT}`))
 
 
 
