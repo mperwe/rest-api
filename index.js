@@ -4,7 +4,7 @@ import bodyParser from "body-parser"; //  Allows to take in incoming post reques
 import usersRoutes from './routes/users.js';
 
 const app = express();  // initialise our express application.
-const PORT = 5000    // application port
+const PORT = 4500    // application port
 
 app.use(bodyParser.json());
 

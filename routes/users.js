@@ -19,4 +19,10 @@ router.get('/', (req, res)=> {
     res.send(users);
 });
 
+//sending data fron frontend - Server
+router.post('/', (req, res)=>{
+        console.log('POST ROUTE REACHED');
+        res.send('POST ROUTE REACHED');
+}); 
+
 export default router; 
