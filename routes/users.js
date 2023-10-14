@@ -2,9 +2,25 @@ import express from "express";
 
 const router = express.Router()
 
-// all routes in here are starting with /users
+// create a normal array with an objet
+const users = [
+    {
+        firstName: "Simon",
+        lastname: "Peter",
+        age : "66"
+    },
+    {
+        firstName: "Jane",
+        lastname: "Johns",
+        age : "66"
+    }
+    
+
+]
+
 router.get('/', (req, res)=> {
-    res.send('Hello'); 
+    console.log(users);
+     
 });
 
 export default router; 
