@@ -15,14 +15,17 @@ const users = [
     }
 ]
 router.get('/', (req, res)=> {
-    console.log(users);
+    //console.log(users);
     res.send(users);
 });
 
-//sending data fron frontend - Server
+//sending data front frontend - Server
 router.post('/', (req, res)=>{
-        console.log('POST ROUTE REACHED');
-        res.send('POST ROUTE REACHED');
+        const user = req.body;
+        //console.log('user');
+        users.push(user); // users.push adding dat in to the DB  
+      
+        res.send(`User with the name ${user.firstName} added to the database`);
 }); 
 
 export default router; 
