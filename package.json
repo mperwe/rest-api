@@ -8,7 +8,7 @@
     "start": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": " Frank Mperwe <frankmperwe@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
