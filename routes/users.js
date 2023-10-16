@@ -6,7 +6,7 @@ const router = express.Router(); // Use an Express router
 // all routes in here are starting with /users
 router.get('/', (req, res) => {res.send(users);});
 
-const users = []
+let users = []
 // Getting all Users.
 router.get('/', (req, res) => {
         // console.log ('users');
@@ -34,7 +34,13 @@ router.get('/:id', (req , res)=> {
 
         res.send(req.params);
 });
+        // Route to delete a user by ID
+router.delete('/:id', (req, res)=>{
+        const { id }= req.params;
 
+        users = users.filter((user) =>user.id !== id);
 
- 
+        res.send(`User with ID ${id} deleted from the database.`);
+});
+
 export default router;  
