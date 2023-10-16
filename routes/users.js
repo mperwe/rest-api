@@ -1,29 +1,64 @@
 import express from "express";
-const router = express.Router()
 import { v4 as uuidv4 } from 'uuid';
 
+const router = express.Router(); // Use an Express router 
 
-// create a normal array with an objet
-const users = []
+// all routes in here are starting with /users
+router.get('/', (req, res) => {res.send(users);});
 
-router.get('/', (req, res)=> {
+let users = []
+// Getting all Users.
+router.get('/', (req, res) => {
+        // console.log ('users');
+
         res.send(users);
 });
-
-//sending data front frontend - Server
-router.post('/', (req, res)=>{
+ // adding users into the database.
+router.post('/', (req, res) => {
+         
         const user = req.body;
 
-        users.push({...user, id: uuidv4()}); // users.push adding dat in to the DB  
-      
+        // Generate a unique ID for the user
+
+        users.push({ ...user, id:uuidv4() });
+         
         res.send(`User with the name ${user.firstName} added to the database`);
-}); 
-router.get('/:id', (req, res)=>{
-    const { id } = req.params;
+    });
+    
+    // Getting the User ID.
+router.get('/:id', (req , res)=> {
+        const { id } = req.params;
+        
+         // Find the user with the specified ID
+        const foundUser = users.find((user) => user.id === id);
 
-    const foundUser = users.find((user)=> user.id === id);
+        res.send(req.params);
+});
+        // Route to delete a user by ID
+router.delete('/:id', (req, res)=>{
+        const { id }= req.params;
 
-    res.send('foundUser');
+        users = users.filter((user) =>user.id !== id);
+
+        res.send(`User with ID ${id} deleted from the database.`);
+});
+// Route to update user in database
+router.patch('/:id' , (req, res)=>{
+        const { id } = req.params;
+
+        const { firstName, lastName, age } = req.body;
+
+        const user = users.find((user) => user.id ===id);
+
+        if(firstName) user.firstName = firstName;
+        
+        if(lastName) user.lastName = lastName;
+        
+        if(age) user.age = age;
+        
+
+        res.send(`User with the ID has been updated`);
+        
 })
 
-export default router; 
+export default router;  
