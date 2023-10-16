@@ -28,10 +28,11 @@ router.post('/', (req, res) => {
     // Getting the User ID.
 router.get('/:id', (req , res)=> {
         const { id } = req.params;
+        
+         // Find the user with the specified ID
+        const foundUser = users.find((user) => user.id === id);
 
-        const foundUser = users.find((user)=>user.id);
-
-        res.send('foundUser');
+        res.send(req.params);
 });
 
 
